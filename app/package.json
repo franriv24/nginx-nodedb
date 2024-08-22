@@ -1,0 +1,14 @@
+{
+  "name": "nginx-node-db",
+  "version": "1.0.0",
+  "description": "Node.js application, nginx reverse proxy",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "mysql": "^2.18.1"
+  }
+}
+  
