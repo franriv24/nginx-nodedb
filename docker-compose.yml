@@ -6,6 +6,7 @@ services:
     volumes:
       - ./app:/usr/src/app
     tty: true
+    # entrypoint: sh -c "npm install && npm start"
     ports:
       - "3000:3000"
     depends_on:
@@ -34,7 +35,6 @@ services:
 
   db:
     image: mysql:5.7
-    command: --innodb-use-native-aio=0
     container_name: db
     restart: always
     environment:
@@ -44,7 +44,7 @@ services:
       - "3306:3306"
     tty: true
     volumes:
-      - ./mysql:/var/lib/mysql
+      - mysql:/var/lib/mysql
       - ./db/init:/docker-entrypoint-initdb.d
     networks:
       - node-network
@@ -53,6 +53,10 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+
+volumes:
+  mysql:
+    driver: local
 
 networks: 
   node-network:
